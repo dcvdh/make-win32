@@ -25,7 +25,7 @@ jobs:
           draft: true
           makeLatest: true
           artifactErrorsFailBuild: true
-          body: .github\release.md
+          bodyFile: .github\release.md
           artifacts: "gnumake.exe"
 
       - name: Apply busybox-w32.patch
