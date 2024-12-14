@@ -35,7 +35,7 @@ jobs:
       - name: Build patched make.exe
         working-directory: make
         run: |
-          ../gnumake.exe -f Basic.mk TOOLCHAIN=gcc CC=gcc
+          ./build_w32.bat gcc
           strip --strip-unneeded -o ../make.exe GccRel/gnumake.exe
 
       - uses: ncipollo/release-action@v1

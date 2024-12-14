@@ -1,13 +1,16 @@
+diff --git a/src/w32/subproc/sub_proc.c b/src/w32/subproc/sub_proc.c
+index 4331973a..eace0150 100644
 --- a/src/w32/subproc/sub_proc.c
 +++ b/src/w32/subproc/sub_proc.c
-@@ -546,7 +546,54 @@
+@@ -546,6 +546,58 @@ batch_file_with_spaces(const char *fname)
                  && strpbrk(fname, " \t") != NULL);
  }
  
-+char* find_busybox_w32(const char* path_var)
++char*
++find_busybox_w32(const char* path_var)
 +{
 +        const static char busybox[] = "busybox.exe";
- 
++
 +        char* fullname = xmalloc(MAX_PATH);
 +        HANDLE handle = find_file(busybox, path_var,
 +                fullname, MAX_PATH);
@@ -15,7 +18,8 @@
 +        return handle != INVALID_HANDLE_VALUE ? fullname : NULL;
 +}
 +
-+int busybox_w32_has_command(const char* busybox, const char* cmd)
++int
++busybox_w32_has_command(const char* busybox, const char* cmd)
 +{
 +        int found = 0;
 +
@@ -26,8 +30,10 @@
 +        FILE* list = popen(query, "r");
 +        if (list) {
 +                char line[81];
-+                while (fscanf(list, "%80s", line) == 1) {
-+                        if (!strcmp(line, cmd)) {
++                while (fgets(line, sizeof(line), list)) {
++                        line[strcspn(line, "\n")] = 0;
++
++                        if (!strncmp(line, cmd, sizeof(line))) {
 +                                found = 1;
 +                                break;
 +                        }
@@ -39,7 +45,8 @@
 +        return found;
 +}
 +
-+char** copy_and_shift_argv(const char** argv, size_t shift_by)
++char**
++copy_and_shift_argv(const char** argv, size_t shift_by)
 +{
 +        // argv is terminated by a NULL element.
 +        size_t argv_elems = 0;
@@ -51,11 +58,10 @@
 +
 +        return new_argv;
 +}
-+
+ 
  /*
   * Description:   Create the child process to be helped
-  *
-@@ -686,9 +733,23 @@
+@@ -686,9 +738,24 @@ process_begin(
  
          flags = 0;
  
@@ -66,6 +72,7 @@
 +                        busybox_w32_has_command(busybox, exec_path);
 +
 +                if (from_busybox) {
++                        // The original argv is freed higher in the stack.
 +                        argv = copy_and_shift_argv(argv, 1);
 +                        exec_path = argv[0] = busybox;
 +                }
