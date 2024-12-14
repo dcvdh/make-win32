@@ -25,7 +25,7 @@
 +
 +        FILE* list = popen(query, "r");
 +        if (list) {
-+                char line[80];
++                char line[81];
 +                while (fscanf(list, "%80s", line) == 1) {
 +                        if (!strcmp(line, cmd)) {
 +                                found = 1;
