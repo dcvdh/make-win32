@@ -18,7 +18,7 @@ You can grab them from the above links or the [latest release][2].
    requires [sed][7] and [curl][8].
 4. **[optional]** Apply the busybox patch with `patch -p1 -i busybox-w32.patch`
 5. Run `build_w32.bat gcc` which will produce `GccRel/gnumake.exe`
-6. **[optional]** Strip debugging symbols with
+6. **[optional]** Strip debug symbols with
   `strip --strip-unneeded -o make.exe GccRel/gnumake.exe`
 
 [1]: <https://www.gnu.org/software/make/>
