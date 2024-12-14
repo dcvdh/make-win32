@@ -13,7 +13,7 @@ You can grab them from the above links or the [latest release][2].
 1. Get a MinGW toolchain like [w64devkit][4]. You can also use Visual Studio
    apparently.
 2. Get the latest tarball from a [gnu.org mirror][5], clone the [original
-   repo][6], or clone this one (and remember to `git submodule update --init`)
+   repo][6], or clone this one (and submodules)
 3. **[unnecessary with the tarball]** Run `bootstrap.bat` which
    requires [sed][7] and [curl][8].
 4. **[optional]** Apply the busybox patch with `patch -p1 -i busybox-w32.patch`
