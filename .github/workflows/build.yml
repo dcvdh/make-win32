@@ -20,6 +20,10 @@ jobs:
           ./build_w32.bat gcc
           strip --strip-unneeded -o ../gnumake.exe GccRel/gnumake.exe
 
+      - name: Test gnumake.exe
+        working-directory: make
+        run: ../gnumake.exe check TOOLCHAIN=gcc
+
       - uses: ncipollo/release-action@v1
         with:
           draft: true
@@ -37,6 +41,10 @@ jobs:
         run: |
           ./build_w32.bat gcc
           strip --strip-unneeded -o ../make.exe GccRel/gnumake.exe
+
+      - name: Test make.exe
+        working-directory: make
+        run: ../make.exe check TOOLCHAIN=gcc
 
       - uses: ncipollo/release-action@v1
         with:
