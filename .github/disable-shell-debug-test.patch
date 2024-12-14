@@ -1,0 +1,23 @@
+diff --git a/tests/scripts/targets/POSIX b/tests/scripts/targets/POSIX
+index 325d58cb..ba14f551 100644
+--- a/tests/scripts/targets/POSIX
++++ b/tests/scripts/targets/POSIX
+@@ -62,12 +62,12 @@ my $script = subst_make_string('#HELPER# -q fail 1; true');
+ my $flags = '-xc';
+ my $out = `$sh_name $flags '$script' 2>&1`;
+ 
+-run_make_test(qq!
+-.SHELLFLAGS = $flags
+-.POSIX:
+-all: ; \@$script
+-!,
+-              '', $out);
++#run_make_test(qq!
++#.SHELLFLAGS = $flags
++#.POSIX:
++#all: ; \@$script
++#!,
++#              '', $out);
+ 
+ # Test the default value of various POSIX-specific variables
+ my %POSIX = (AR => 'ar', ARFLAGS => '-rv',

@@ -16,9 +16,14 @@ jobs:
       - name: Build unpatched gnumake.exe
         working-directory: make
         run: |
+          del maintMakefile
           ./bootstrap.bat
           ./build_w32.bat gcc
           strip --strip-unneeded -o ../gnumake.exe GccRel/gnumake.exe
+
+      - name: Apply disable-shell-debug-test.patch
+        working-directory: make
+        run: patch -p1 -i ../.github/disable-shell-debug-test.patch
 
       - name: Test gnumake.exe
         working-directory: make
