@@ -23,9 +23,9 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           draft: true
-          omitBody: true
           makeLatest: true
           artifactErrorsFailBuild: true
+          body: .github\release.md
           artifacts: "gnumake.exe"
 
       - name: Apply busybox-w32.patch
