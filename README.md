@@ -13,13 +13,12 @@ You can grab them from the above links or the [latest release][2].
 1. Get a MinGW toolchain like [w64devkit][4]. You can also use Visual Studio
    apparently.
 2. Get the latest tarball from a [gnu.org mirror][5], clone the [original
-   repo][6], or clone this one (and make sure to `git submodule init` and
-   `git submodule update`).
-3. **[unnecessary if you're working from the tarball]** Run `bootstrap.bat` which
+   repo][6], or clone this one (and remember to `git submodule update --init`)
+3. **[unnecessary with the tarball]** Run `bootstrap.bat` which
    requires [sed][7] and [curl][8].
-4. **[optional]** Apply the busybox patch with `patch -p1 -i busybox-w32.patch`.
+4. **[optional]** Apply the busybox patch with `patch -p1 -i busybox-w32.patch`
 5. Run `build_w32.bat gcc` which will produce `GccRel/gnumake.exe`
-6. **[optional]** Strip debugging symbols and rename it with
+6. **[optional]** Strip debugging symbols with
   `strip --strip-unneeded -o make.exe GccRel/gnumake.exe`
 
 [1]: <https://www.gnu.org/software/make/>
