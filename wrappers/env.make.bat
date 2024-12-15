@@ -1,8 +1,3 @@
-::
-:: This should be sourced by CLion by adding it to your toolchain config with
-:: the "add environment" option.
-::
-
 :: The local MinGW toolchain.
 ::
 :: e.g. MINGW=<winlibs>\bin
