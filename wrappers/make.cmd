@@ -1,8 +1,3 @@
-::
-:: This starts make with a *nix-like environment. It's not necessary if you're
-:: using the unpatched build.
-::
-
 :: Enter a local scope to prevent leaking environment changes.
 @setlocal
 
