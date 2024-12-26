@@ -29,14 +29,6 @@ jobs:
         working-directory: make
         run: ../gnumake.exe check TOOLCHAIN=gcc
 
-      - uses: ncipollo/release-action@v1
-        with:
-          draft: true
-          makeLatest: true
-          artifactErrorsFailBuild: true
-          bodyFile: .github/release.md
-          artifacts: "gnumake.exe"
-
       - name: Apply busybox-w32.patch
         working-directory: make
         run: patch -p1 -i ../busybox-w32.patch
@@ -53,7 +45,7 @@ jobs:
 
       - uses: ncipollo/release-action@v1
         with:
-          omitBody: true
-          allowUpdates: true
+          makeLatest: true
           artifactErrorsFailBuild: true
-          artifacts: "make.exe"
+          bodyFile: .github/release.md
+          artifacts: "make.exe,gnumake.exe"

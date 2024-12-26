@@ -1,6 +1,6 @@
 # Wrapper Script for Unpatched Make
 
-This is for running make in a *nix-like environment without the [busybox-w32][1]
+This is for running Make in a *nix-like environment without the [busybox-w32][1]
 patch. You can use it with e.g. [Git for Windows][2] (way more than just git)
 and [w64devkit][3].
 
